@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+        <title>Login</title>
+    </head>
+    <body>
+        <section class="material-half-bg">
+            <div class="cover"></div>
+        </section>
+          <section class="login-content">
+            <div>
+              <h1 style="color:white;">AT THE SCHOOL</h1>
+            </div>
+            <div class="login-box">
+              <form class="login-form" action="{{path('home_page')}}">
+                <div class="form-group">
+                  <label class="control-label">USERNAME</label>
+                  <input class="form-control" type="text" placeholder="Email" autofocus>
+                </div>
+                <div class="form-group">
+                  <label class="control-label">PASSWORD</label>
+                  <input class="form-control" type="password" placeholder="Password">
+                </div>
+              
+                <div class="form-group btn-container">
+                  <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>CONNECT</button>
+                </div>
+              </form>
+              
+            </div>
+          </section>
+        <!-- Essential javascripts for application to work-->
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+    </body>
+</html>
+
