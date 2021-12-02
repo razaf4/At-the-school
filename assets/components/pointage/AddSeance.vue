@@ -3,17 +3,17 @@
       <!-- Sous-menu -->
       <v-bottom-navigation color="teal" grow>
         
-          <v-btn href="/student/inscription_student">
+          <v-btn href="#">
             <span>New Inscription</span>
             <v-icon>mdi-history</v-icon>
           </v-btn>
 
-        <v-btn href="/student/import_list_student" style="background-color: #009688;">
-          <span style="color: white;">Import list of student</span>
-          <b-icon style="color: white;" icon="tag-fill"></b-icon>
+        <v-btn href="#">
+          <span>Import list of student</span>
+          <b-icon icon="tag-fill"></b-icon>
         </v-btn>
 
-        <v-btn href="/student/search_list_student">
+        <v-btn href="#">
           <span>Search student</span>
           <v-icon>mdi-map-marker</v-icon>
         </v-btn>
@@ -31,7 +31,7 @@
     </v-app>
 </template>
 <script>
-export default {
-  name: 'ImportStudent'
-}
+    export default {
+        name: 'AddSeance'
+    }
 </script>

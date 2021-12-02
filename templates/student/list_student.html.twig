@@ -1,5 +1,112 @@
 {% extends "base.html.twig" %}
 
 {% block body %} 
-    <p>liste des étudiants</p>
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    {{ encore_entry_link_tags('import_student') }}
+        <div id="import_student">
+            <importstudent></importstudent>
+        </div>
+
+        <div class="table-twig">
+            <p class="align-center">LISTE DES ETUDIANTS</p>
+            <div style="margin-left: 20px;">
+                <p> Annee-Universitaire : {{ AuD }} - {{ AuF }} </p>
+                </p> Niveau : {{ Niveau }} </p>
+                </p> Parcours : {{ Parcours }} </p>
+                {% if Groupe != null %}
+                    </p> Groupe : {{ Groupe }} </p>
+                {% endif %}
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                  <div class="tile-body">
+                    <table class="table table-bordered table-hover" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>Matricule</th>
+                                <th>Nom et Prénom(s)</th>
+                                <th>Téléphone</th>
+                                <th>E-mail</th>
+                                <th>Naissance</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for liste_etudiant in liste_etudiants %}
+                                <tr>
+                                    <td> {{liste_etudiant.matricule}} </td>
+                                    <td> {{liste_etudiant.nom}} </td>
+                                    <td> {{liste_etudiant.telephone}} </td>
+                                    <td> {{liste_etudiant.email}} </td>
+                                    <td> {{liste_etudiant.dateNaissance}} </td>
+                                    <td> <a href="{{path('edit_student',{id:liste_etudiant.id})}}">Modifier</a> </td>
+                                    <td> <a href="{{path('delete_student',{id:liste_etudiant.id})}}" onclick="return confirm('Voulez-vous supprimer?')" style="color: red;">Supprimer</a> </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Modal
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                {{form_start(formEditEtudiant)}}
+                <div class="row">
+                  <div class="col-lg-6">
+                {{form_row(formEditEtudiant.matricule)}}
+                  </div><div class="col-lg-6">
+                {{form_row(formEditEtudiant.idGroupe)}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                {{form_row(formEditEtudiant.nom)}}
+                  </div><div class="col-lg-6">
+                {{form_row(formEditEtudiant.email)}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                {{form_row(formEditEtudiant.telephone)}}
+                  </div><div class="col-lg-6">
+                {{form_row(formEditEtudiant.date_naissance)}}
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+          </div>{{form_end(formEditEtudiant)}}
+        </div>
+      </div>
+    </div> -->
+    {{ encore_entry_script_tags('import_student') }}
+    
+        <!-- Essential javascripts for application to work-->
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+        <!-- The javascript plugin to display page loading on top-->
+        <script src="{{ asset('js/plugins/pace.min.js')}}"></script>
+        <!-- Page specific javascripts-->
+        <script type="text/javascript" src="{{ asset('js/plugins/chart.js')}}"></script>
+        <!-- Data table plugin-->
+        <script type="text/javascript" src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/plugins/dataTables.bootstrap.min.js')}}"></script>
+        <script type="text/javascript">$('#sampleTable').DataTable();</script>
 {% endblock %}

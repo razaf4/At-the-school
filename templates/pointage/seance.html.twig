@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+
+    {{ encore_entry_link_tags('add_seance') }}
+    <div id="add_seance">
+        <addseance></addseance>
+    </div>
+    <div class="table-twig">
+        <div class="container">
+            <div style="text-align: center;">
+                <p>SEANCE</p>
+            </div>
+            <p>Annee-Universitaire : {{anneeDebut}} - {{anneeFin}}</p>
+            <div class="row">
+                <div class="col-8">
+                    <p>Nom de l'enseignant: {{app.user.nom}}</p>
+                </div>
+            </div>
+            {{ form_start(formSeance) }}
+                <div class="row">
+                    <div class="col-8">
+                        {{ form_row(formSeance.idMatiere) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        {{ form_row(formSeance.idNiveau) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        {{ form_row(formSeance.idParcours) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        {{ form_row(formSeance.dateSeance) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{ form_row(formSeance.heureDebut) }}
+                    </div>
+                    <div class="col-4">
+                        {{ form_row(formSeance.heureFin) }}
+                    </div>
+                    {% if formSeance.colonneTeste is defined %}
+                        {{form_row(formSeance.colonneTeste)}}
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-info">VALIDER</button>
+            {{ form_end(formSeance) }}
+        </div>
+    </div>
+
+    {{ encore_entry_script_tags('add_seance') }}
+{% endblock %}

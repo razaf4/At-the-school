@@ -13,8 +13,8 @@
           <b-icon icon="tag-fill"></b-icon>
         </v-btn>
 
-        <v-btn href="#">
-          <span>Nearby</span>
+        <v-btn href="/student/search_list_student">
+          <span>Search student</span>
           <v-icon>mdi-map-marker</v-icon>
         </v-btn>
 
@@ -35,13 +35,10 @@
         <validation-observer ref="observer" v-slot="{ invalid }">
             <form @submit.prevent="submit">
                 <validation-provider v-slot="{ errors }" name="Matricule" rules="required">
-                    <v-text-field v-model="matricule" :error-messages="errors" label="Matricule(Scan the card)" disabled required></v-text-field>
-                </validation-provider>
-                <validation-provider v-slot="{ errors }" name="Photo" rules="required">
-                    <v-file-input v-model="photo" :rules="rules" :error-messages="errors" accept="image/png, image/jpeg, image/bmp" placeholder="Pick an avatar" prepend-icon="mdi-camera" label="Avatar"></v-file-input>
+                    <v-text-field v-model="matricule" :error-messages="errors" label="Matricule(Scan the card)"  required></v-text-field>
                 </validation-provider>
                 <validation-provider v-slot="{ errors }" name="Name" rules="required">
-                    <v-text-field v-model="name" :error-messages="errors" label="Name" required></v-text-field>
+                    <v-text-field v-model="nom" :error-messages="errors" label="Name" required></v-text-field>
                 </validation-provider>
                 <validation-provider v-slot="{ errors }" name="niveau" rules="required">
                     <v-select v-model="niveau" :items="items_niveau" :error-messages="errors" label="Level" data-vv-name="niveau" required></v-select>
@@ -50,7 +47,7 @@
                     <v-select v-model="parcours" :items="items_parcours" :error-messages="errors" label="Branch" data-vv-name="parcours" required></v-select>
                 </validation-provider>
                 <validation-provider v-slot="{ errors }" name="phoneNumber" :rules="{required: true, digits: 12}">
-                    <v-text-field v-model="phoneNumber" :counter="12" placeholder="Ex:261321000000" :error-messages="errors" label="Phone Number" required></v-text-field>
+                    <v-text-field v-model="phone" :counter="12" placeholder="Ex:261321000000" :error-messages="errors" label="Phone Number" required></v-text-field>
                 </validation-provider>
                 <validation-provider v-slot="{ errors }" name="email" rules="required|email">
                     <v-text-field v-model="email" :error-messages="errors" placeholder="attheschool@gmail.com" label="E-mail" required></v-text-field>
@@ -71,6 +68,7 @@
     </v-app>
 </template>
 <script>
+    import axios from 'axios'
     import { required, digits, email, max, regex } from 'vee-validate/dist/rules'
     import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
     
@@ -109,11 +107,10 @@
     },
     data: () => ({
       matricule: '',
-      photo: '',
-      name: '',
+      nom: '',
       niveau: '',
       parcours: '',
-      phoneNumber: '',
+      phone: '',
       email: '',
       sexe: null,
       naissance: '',
@@ -138,14 +135,28 @@
     methods: {
       submit () {
         this.$refs.observer.validate()
+        axios.post('/student/inscription_student', {
+                    matricule: this.matricule,
+                    nom: this.nom,
+                    niveau: this.niveau,
+                    parcours: this.parcours,
+                    phone: this.phone,
+                    email: this.email,
+                    sexe: this.sexe,
+                    naissance: this.naissance 
+                  }).then(function (response) {
+                        console.log(response);
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
       },
       clear () {
         this.matricule = ''
-        this.photo = ''
-        this.name = ''
+        this.nom = ''
         this.niveau = null
         this.parcours = null
-        this.phoneNumber = ''
+        this.phone = ''
         this.email = ''
         this.sexe = null
         this.naissance = ''

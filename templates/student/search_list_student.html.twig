@@ -1,0 +1,92 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/cssTwig.css')}}"> 
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}"> 
+    {{ encore_entry_link_tags('search_student') }}
+    <div id="search_student">
+        <searchstudent></searchstudent>
+    </div>
+    <div class="table-twig">
+        <div class="container">
+            {{form_start(searchEtudiant)}}
+                <div class="row">
+                    <div class="col-2">{{form_row(searchEtudiant.idAuD)}}</div>
+                    <div class="col-2">{{form_row(searchEtudiant.idAuF)}}</div>
+                    <div class="col-2">{{form_row(searchEtudiant.idNiveau)}}</div>
+                    <div class="col-2">{{form_row(searchEtudiant.idParcours)}}</div>
+                    <div class="col-2">{{form_row(searchEtudiant.idGroupe)}}</div>
+                    <div class="col-2"><button type="submit" id="bouton-search">Search</button></div>
+                </div>
+            {{form_end(searchEtudiant)}}
+        </div>
+
+        {% if resultats is defined %}
+        <!-- tableau du résultats -->
+        <div>
+            <div class="container">
+                <p class="align-center">LISTE DES ETUDIANTS</p>
+                <div>
+                    <p> Annee-Universitaire : {{ app.session.get('AuD') }} - {{ app.session.get('AuF') }} </p>
+                    </p> Niveau : {{ app.session.get('Niveau') }} </p>
+                    </p> Parcours : {{ app.session.get('Parcours') }} </p>
+                    {% if app.session.get('Groupe') != null %}
+                        </p> Groupe : {{ app.session.get('Groupe') }} </p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tile">
+                    <div class="tile-body">
+                        <table class="table table-bordered table-hover" id="sampleTable">
+                            <thead>
+                                <tr>
+                                    <th>Matricule</th>
+                                    <th>Nom et Prénom(s)</th>
+                                    <th>Téléphone</th>
+                                    <th>E-mail</th>
+                                    <th>Naissance</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for resultat in resultats %}
+                                    <tr>
+                                        <td> {{resultat.matricule}} </td>
+                                        <td> {{resultat.nom}} </td>
+                                        <td> {{resultat.telephone}} </td>
+                                        <td> {{resultat.email}} </td>
+                                        <td> {{resultat.dateNaissance}} </td>
+                                        <td> <a href="{{path('edit_student',{id:resultat.id})}}">Modifier</a> </td>
+                                        <td> <a href="{{path('delete_student',{id:resultat.id})}}" onclick="return confirm('Voulez-vous supprimer?')" style="color: red;">Supprimer</a> </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- fin du tableau -->
+        {% endif %}
+    </div>
+    
+    {{ encore_entry_script_tags('search_student') }}
+    <!-- Essential javascripts for application to work-->
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+        <!-- The javascript plugin to display page loading on top-->
+        <script src="{{ asset('js/plugins/pace.min.js')}}"></script>
+        <!-- Page specific javascripts-->
+        <script type="text/javascript" src="{{ asset('js/plugins/chart.js')}}"></script>
+        <!-- Data table plugin-->
+        <script type="text/javascript" src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/plugins/dataTables.bootstrap.min.js')}}"></script>
+        <script type="text/javascript">$('#sampleTable').DataTable();</script>
+{% endblock %}

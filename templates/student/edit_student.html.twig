@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block body %} 
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    {{ encore_entry_link_tags('import_student') }}
+        <div id="import_student">
+            <importstudent></importstudent>
+        </div>
+        <div class="table-twig" style="width: 65%; margin-left:250px;">
+            <p class="align-center">EDIT DES ETUDIANTS</p>
+        
+            {{form_start(formEditEtudiant)}}
+                {{form_row(formEditEtudiant.matricule)}}
+                {{form_row(formEditEtudiant.idGroupe)}}
+                {{form_row(formEditEtudiant.nom)}}
+                {{form_row(formEditEtudiant.email)}}
+                {{form_row(formEditEtudiant.telephone)}}
+                {{form_row(formEditEtudiant.date_naissance)}}
+                <button type="submit" class="btn btn-primary">Valider</button>
+            {{form_end(formEditEtudiant)}}
+        </div>
+    {{ encore_entry_script_tags('import_student') }}
+    
+{% endblock %}

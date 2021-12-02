@@ -1,0 +1,37 @@
+.data-twig{
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 20%;
+}
+.table-twig{
+    position: absolute;
+    width: 100%;
+    margin-top: 25px;
+}
+.align-center{
+    text-align: center;
+    
+}
+.table-result-search{
+    position: absolute;
+    width: 100%;
+}
+#bouton-search{
+    margin-top: 31px; 
+    background:lightgrey; 
+    width:100px; 
+    height: 35px; 
+    border-radius:2px;
+}
+#bouton-search:hover{
+    margin-top: 31px; 
+    background:gray; 
+    width:100px; 
+    color: white;
+    height: 35px; 
+}
+.container{
+    border: 1px solid lightgray;
+    border-radius: 1px;
+    margin-bottom: 20px;
+}

@@ -6,15 +6,15 @@
         <v-app-bar-nav-icon @click="drawer = !drawer" style="color:white;"></v-app-bar-nav-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         <v-toolbar-title> <a href="/student/add_student" style="text-decoration:none; color:white;">SUPPORT ETUDIANT</a> </v-toolbar-title>&nbsp;&nbsp;&nbsp;
-        <v-toolbar-title> <a href="#" style="text-decoration:none; color:white;">MENU 2</a> </v-toolbar-title>&nbsp;&nbsp;&nbsp;
+        <v-toolbar-title> <a href="/pointage/seance" style="text-decoration:none; color:white;">POINTAGE</a> </v-toolbar-title>&nbsp;&nbsp;&nbsp;
         <v-toolbar-title> <a href="#" style="text-decoration:none; color:white;">MENU 3</a> </v-toolbar-title>
         <v-spacer></v-spacer>
-        <a href="#" style="text-decoration:none; color:white;"><b-icon icon="gear" style="color:white;" aria-hidden="true"></b-icon></a>
+        <a href="/setting/year" style="text-decoration:none; color:white;"><b-icon icon="gear" style="color:white;" aria-hidden="true"></b-icon></a>
       </v-app-bar>
     </v-card>
     <!-- left navigation  -->
-          <v-app style="float:left">
-            <v-navigation-drawer v-model="drawer" bottom temporary  style="background: lightgray;">
+          <v-app style="float:left;">
+            <v-navigation-drawer v-model="drawer" bottom temporary  style="background: lightgray; height: 590px">
               <v-list nav dense>
                 <v-list-item-avatar>
                     <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
@@ -34,7 +34,9 @@
                   </v-list-item>
 
                   <v-list-item>
-                    <v-list-item-title> LOGOUT </v-list-item-title>
+                    <a href="/security/logout">
+                      <v-list-item-title> LOGOUT </v-list-item-title>
+                    </a>
                   </v-list-item>
                 </v-list-item-group>
               </v-list>

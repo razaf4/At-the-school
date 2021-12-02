@@ -1,13 +1,30 @@
 {% extends "base.html.twig" %}
 
-{% block body %} 
-<div class="example-wrapper">
-    <h1><a href="{{ path('list_student') }}">Export -></a></h1>
-
-</div>
+{% block body %}
     {{ encore_entry_link_tags('import_student') }}
-    <div id="import_student">
-        <importstudent></importstudent>
-    </div>
+        <div id="import_student">
+            <importstudent></importstudent>
+        </div>
+        <div class="table-twig">
+            <div class="container">
+                {{form_start(form)}}
+                    <div class="row">
+                        <div class="col-4">{{form_row(form.idAuD)}}</div>
+                        <div class="col-4">{{form_row(form.idAuF)}}</div>
+                    </div><div class="row">
+                        <div class="col-8">{{form_row(form.idNiveau)}}</div>
+                    </div><div class="row">
+                        <div class="col-8">{{form_row(form.idParcours)}}</div>
+                    </div><div class="row">
+                        <div class="col-8">{{form_row(form.idGroupe)}}</div>
+                    </div><div class="row">
+                        <div class="col-8">{{form_row(form.photo)}}</div>
+                    </div>
+                    <div class="col-4">{{form_row(form.Importer)}}</div>
+                {{form_end(form)}}
+            </div>
+        </div>
+        
     {{ encore_entry_script_tags('import_student') }}
+
 {% endblock %}

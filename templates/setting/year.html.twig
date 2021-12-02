@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/cssTwig.css')}}"> 
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <div class="container">
+        <p>PARAMETRES</p>
+    </div>
+    <div class="container">
+        {{ form_start(formAnneeCourante) }}
+        <p>Parametre d'année Universitaire courant</p>
+        <!-- affiché la notification d'insertion -->
+            <div style="margin-left: 150px;">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        <!-- fin de la notification -->
+        <div class="row">
+            <div class="col-4">
+                {{ form_row(formAnneeCourante.anneeDebut)}}
+            </div>
+            <div class="col-4">
+                {{ form_row(formAnneeCourante.anneeFin)}}
+            </div>
+            <div class="col-4">
+                <button type="submit" id="bouton-search">Valider</button>
+            </div>
+        </div>
+        {{ form_end(formAnneeCourante) }}
+    </div>
+{% endblock %}

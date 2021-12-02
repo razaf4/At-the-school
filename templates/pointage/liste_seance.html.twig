@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <div class="container">
+        <p>Liste Seance</p>
+    </div>
+    <div class="container">
+        <p>Annee-Universitaire : {{anneeDebut}} - {{anneeFin}}</p>
+        <p>Nom de l'Enseignant: {{app.user.nom}}</p>
+        <p>Matière: {{ matiere }}</p>
+        <p>Niveau: {{ niveau }}</p>
+        <p>Parcours: {{ parcours }}</p>
+        
+        <!-- tableau -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tile">
+                  <div class="tile-body">
+                    <table class="table table-bordered table-hover" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>Matricule</th>
+                                <th>Nom</th>
+                                <th>2021-11-30 | 08 h - 10 h</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>  </td>
+                                <td>  </td>
+                                <td>  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- fin du tableau -->
+    </div>
+    <!-- Essential javascripts for application to work-->
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+        <!-- The javascript plugin to display page loading on top-->
+        <script src="{{ asset('js/plugins/pace.min.js')}}"></script>
+        <!-- Page specific javascripts-->
+        <script type="text/javascript" src="{{ asset('js/plugins/chart.js')}}"></script>
+        <!-- Data table plugin-->
+        <script type="text/javascript" src="{{asset('js/plugins/jquery.dataTables.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/plugins/dataTables.bootstrap.min.js')}}"></script>
+        <script type="text/javascript">$('#sampleTable').DataTable();</script>
+{% endblock %}

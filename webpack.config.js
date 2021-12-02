@@ -24,6 +24,8 @@ Encore
     .addEntry('student', './assets/js/student.js')
     .addEntry('inscription_student', './assets/js/inscription_student.js')
     .addEntry('import_student', './assets/js/import_student.js')
+    .addEntry('search_student', './assets/js/search_student.js')
+    .addEntry('add_seance', './assets/js/pointage/add_seance.js')
 
     // Activation de Vue.js
     .enableVueLoader()

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!-- Main CSS-->
+<link rel="stylesheet" type="text/css" href="{{asset('css/cssTwig.css')}}"> 
+<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <div class="container">
+        <p>Nouveau Utilisateur</p>
+        <div style="margin-left: 150px;">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {{ form_start(formUser) }}
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.matricule) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.nom) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.email) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.fonction) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.password) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10">{{ form_row(formUser.confirm_password) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-10"><button type="submit" id="bouton-search">Enregistrer</button></div>
+            </div>
+            
+        {{ form_end(formUser) }}
+    </div>
+{% endblock %}

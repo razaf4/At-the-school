@@ -13,8 +13,8 @@
           <b-icon icon="tag-fill"></b-icon>
         </v-btn>
 
-        <v-btn href="#">
-          <span>Nearby</span>
+        <v-btn href="/student/search_list_student">
+          <span>Search student</span>
           <v-icon>mdi-map-marker</v-icon>
         </v-btn>
 
